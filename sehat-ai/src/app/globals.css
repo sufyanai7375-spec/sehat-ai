@@ -1,0 +1,201 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=Noto+Nastaliq+Urdu:wght@400;500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --sehat-green: #0a7c5c;
+  --sehat-teal: #0d9488;
+  --sehat-accent: #14b8a6;
+  --sehat-gold: #d4a853;
+  --sehat-dark: #042f2e;
+  --sehat-light: #f0fdf9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "DM Sans", sans-serif;
+  background: #f0fdf9;
+  color: #042f2e;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f0fdf9;
+}
+::-webkit-scrollbar-thumb {
+  background: #0d9488;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #0a7c5c;
+}
+
+/* Chat message animations */
+.message-enter {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Typing dots */
+.typing-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #0d9488;
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+.typing-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.typing-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes typingBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-8px); opacity: 1; }
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #0a7c5c, #14b8a6, #d4a853);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Shimmer loading */
+.shimmer {
+  background: linear-gradient(90deg, #e0f2f1 25%, #b2dfdb 50%, #e0f2f1 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* Pulse green */
+.pulse-green {
+  animation: pulseGreen 2s ease-in-out infinite;
+}
+
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(13, 148, 136, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(13, 148, 136, 0); }
+}
+
+/* Send button hover */
+.send-btn {
+  transition: all 0.2s ease;
+}
+.send-btn:hover {
+  transform: scale(1.05);
+}
+.send-btn:active {
+  transform: scale(0.95);
+}
+
+/* Message bubble */
+.user-bubble {
+  background: linear-gradient(135deg, #0a7c5c, #0d9488);
+  color: white;
+  border-radius: 20px 20px 4px 20px;
+}
+
+.ai-bubble {
+  background: white;
+  border: 1px solid rgba(13, 148, 136, 0.15);
+  border-radius: 20px 20px 20px 4px;
+  box-shadow: 0 2px 12px rgba(13, 148, 136, 0.08);
+}
+
+/* Input focus */
+.chat-input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+}
+
+/* Sidebar */
+.sidebar-item:hover {
+  background: rgba(13, 148, 136, 0.08);
+}
+.sidebar-item.active {
+  background: rgba(13, 148, 136, 0.12);
+  border-right: 3px solid #0d9488;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .sidebar.open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+  }
+}
+
+/* Markdown in AI responses */
+.ai-response h1, .ai-response h2, .ai-response h3 {
+  font-family: "Playfair Display", serif;
+  color: #0a7c5c;
+  margin: 0.75rem 0 0.4rem;
+}
+.ai-response p {
+  margin: 0.4rem 0;
+  line-height: 1.75;
+}
+.ai-response ul, .ai-response ol {
+  padding-left: 1.4rem;
+  margin: 0.4rem 0;
+}
+.ai-response li {
+  margin: 0.25rem 0;
+}
+.ai-response strong {
+  color: #0a7c5c;
+  font-weight: 600;
+}
+.ai-response code {
+  background: #f0fdf9;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #0d9488;
+}
