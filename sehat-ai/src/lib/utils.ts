@@ -46,7 +46,8 @@ export function formatMarkdown(text: string): string {
     .replace(/^# (.*$)/gim, "<h1>$1</h1>")
     .replace(/^\* (.*$)/gim, "<li>$1</li>")
     .replace(/^- (.*$)/gim, "<li>$1</li>")
-    .replace(/(<li>.*<\/li>)/gims, "<ul>$1</ul>")
+    // .replace(/(<li>.*<\/li>)/gims, "<ul>$1</ul>")
+    .replace(/(<li>[\s\S]*?<\/li>)/gim, "<ul>$1</ul>")
     .replace(/\n/g, "<br>");
 }
 
